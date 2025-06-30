@@ -9,6 +9,6 @@ fun main() {
     File(readln()).walk().toList().filter { f ->
         f.extension in listOf("png", "jpg") && f.extension !in readMetadata(f)
             .getFirstDirectoryOfType(FileTypeDirectory::class.java).tags.map { it.description }
-    }.map { it.name }.apply { println("Image files with wrong extension: ${(if (isEmpty()) "\n(none)" else "")}") }
+    }.map { it.name }.apply { println("Image files with wrong extension: ${if (isEmpty()) "\n(none)" else ""}") }
         .forEach(::println)
 }

@@ -7,7 +7,7 @@ import java.io.File
 
 fun main() {
     print("Enter path: ")
-    readLine()?.run { replaceFirst("\\\\$", "") }?.run {
+    readLine()?.replaceFirst("\\\\$", "")?.run {
         File(this).walk().toList().filter {
             it.extension in listOf("png", "jpg") && it.extension !in readMetadata(it)
                 .getFirstDirectoryOfType(FileTypeDirectory::class.java).tags.map(Tag::getDescription)
